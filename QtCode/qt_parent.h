@@ -5,8 +5,8 @@
 #include <QThread>
 #include <QTextStream>
 
-class qtParent : QObject {
-
+class qtParent : public QObject{
+    Q_OBJECT
 public:
     qtParent(QString path, QStringList args);
     void startRos();
@@ -15,7 +15,7 @@ private:
     QProcess * rosProcess;
     void connectSlots();
 
-private slots:
+public slots:
     void printData();
 
 };

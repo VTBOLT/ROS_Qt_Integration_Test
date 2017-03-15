@@ -18,11 +18,16 @@ void qtParent::startRos()
 
 void qtParent::connectSlots()
 {
-    connect(rosProcess, SIGNAL(readyReadStandardOutput()),this,SLOT(printData()));
+    connect(rosProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(printData()));
 }
 
 void qtParent::printData()
 {
-    QString data = rosProcess->readAllStandardOutput();
+    // here is where we interpret the data and emit a signal to the needle, battery,
+    // etc ...
+
+    //qint64 data = 0;
+    //rosProcess->read(data);
+    QByteArray data = rosProcess->readAllStandardOutput();
     qCout << "DATA FROM ROS: " << data << endl;
 }
